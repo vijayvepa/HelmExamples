@@ -11,10 +11,12 @@ data:
   {{- if eq .Values.favorite.drink "coffee" }}
   mug: "true" 
   {{- end}}
+  {{- $relname := .Release.Name -}}
   {{- with .Values.favorite }}
   scopeDrink: {{ .drink | default "tea" | quote }}
   scopeFood: {{ .food | upper | quote }}
   scopeReleaseName: {{ $.Release.Name}}
+  varReleaseName: {{$relname}}
   {{- end}}
   toppings: |-
       {{- range .Values.pizzaToppings}}
@@ -23,4 +25,12 @@ data:
   sizes: |-
     {{- range tuple "small" "medium" "large"}}
     - {{ . | title }}
+    {{- end}}
+  varToppings: |-
+    {{- range $index, $topping := .Values.pizzaToppings }}
+      {{$index}}: {{$topping}}
+    {{- end}}
+  varKeyValues: |-
+    {{- range $key, $val := .Values.favorite }}
+      {{$key}}: {{$val}}
     {{- end}}
