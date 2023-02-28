@@ -3,5 +3,11 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-valueuser
 data:
-  favoriteDrink: {{ .Values.favorite.drink }}
-  favoriteFood: {{ .Values.favorite.food }}
+  favoriteDrinkDefault: {{ .Values.favorite.drink | default "tea" | quote }}
+  favoriteFood: {{ .Values.favorite.food | quote}}
+  favoriteFoodUpper: {{ .Values.favorite.food | quote | upper }}
+  favoriteFoodUpperRepeat: {{ .Values.favorite.food | repeat 5 | quote | upper }}
+  conditionalFood: {{ .Values.favorite.food | upper | quote }}
+  {{- if eq .Values.favorite.drink "coffee" }}
+  mug: "true" 
+  {{- end}}

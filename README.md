@@ -28,3 +28,7 @@ helm uninstall full-coral
 ```
 helm install --debug --dry-run goodly-guppy ./mychart
 ```
+-- override value
+```
+helm install --debug --dry-run goodly-guppy ./mychart --set favorite.drink="Orange Juice"
+```
