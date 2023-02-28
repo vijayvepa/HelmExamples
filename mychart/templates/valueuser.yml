@@ -11,3 +11,7 @@ data:
   {{- if eq .Values.favorite.drink "coffee" }}
   mug: "true" 
   {{- end}}
+  {{- with .Values.favorite }}
+  scopeDrink: {{ .drink | default "tea" | quote }}
+  scopeFood: {{ .food | upper | quote }}
+  {{- end}}
