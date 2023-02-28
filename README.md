@@ -24,3 +24,7 @@ helm get manifest full-coral
 ```
 helm uninstall full-coral
 ```
+- dry run/debug
+```
+helm install --debug --dry-run goodly-guppy ./mychart
+```

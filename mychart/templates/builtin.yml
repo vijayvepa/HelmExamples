@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-builtin
+data:
+  releaseName: {{ .Release.Name }}
+  releaseNamespace: {{ .Release.Namespace }}
+  releaseIsUpgrade: {{ .Release.IsUpgrade }}
+  releaseIsInstall: {{ .Release.IsInstall }}
+  releaseRevision: {{ .Release.Revision }}
+  releaseService: {{ .Release.Service }}
+  chartName: {{ .Chart.Name }}
+  chartVersion: {{ .Chart.Version }}
+  helmVersion: {{ .Capabilities.HelmVersion.Version}}
