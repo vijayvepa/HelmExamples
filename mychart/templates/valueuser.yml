@@ -16,3 +16,11 @@ data:
   scopeFood: {{ .food | upper | quote }}
   scopeReleaseName: {{ $.Release.Name}}
   {{- end}}
+  toppings: |-
+      {{- range .Values.pizzaToppings}}
+      - {{ . | title | quote }}
+      {{- end}}
+  sizes: |-
+    {{- range tuple "small" "medium" "large"}}
+    - {{ . | title }}
+    {{- end}}
