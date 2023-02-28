@@ -14,4 +14,5 @@ data:
   {{- with .Values.favorite }}
   scopeDrink: {{ .drink | default "tea" | quote }}
   scopeFood: {{ .food | upper | quote }}
+  scopeReleaseName: {{ $.Release.Name}}
   {{- end}}
