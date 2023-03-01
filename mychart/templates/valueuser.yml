@@ -4,6 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-valueuser
   {{- template "mycharts.labels" .}}
+  {{- include "mychart.app" . | indent 4 }}
 data:
   favoriteDrinkDefault: {{ .Values.favorite.drink | default "tea" | quote }}
   favoriteFood: {{ .Values.favorite.food | quote}}
@@ -36,3 +37,4 @@ data:
     {{- range $key, $val := .Values.favorite }}
       {{$key}}: {{$val}}
     {{- end}}
+  {{- include "mychart.app" . | indent 2 }}
