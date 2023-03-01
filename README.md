@@ -36,3 +36,14 @@ helm install --debug --dry-run goodly-guppy ./mychart --set favorite.drink="Oran
 ```sh
 helm install --debug --dry-run goodly-guppy --disable-openapi-validation ./mychart
 ```
+
+## Sub-charts
+- create sub chart
+```shell
+cd ./mychart/charts
+helm create mysubchart
+```
+- dry run sub-chart
+```shell
+ helm install --debug --dry-run goodly-guppy ./mychart/charts/mysubchart
+```
