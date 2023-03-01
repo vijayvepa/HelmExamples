@@ -3,8 +3,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-valueuser
-  {{- template "mycharts.labels" .}}
-  {{- include "mychart.app" . | indent 4 }}
+  {{- template "mycharts.labels" .}} {{/*renders specified snippet defined in tpl, "." is the scope to use for rendering*/}}
+  {{- include "mychart.app" . | indent 4 }} {{/*unlike template, include can be sent to pipeline, . is the scope to use*/}}
 data:
   favoriteDrinkDefault: {{ .Values.favorite.drink | default "tea" | quote }}
   favoriteFood: {{ .Values.favorite.food | quote}}
@@ -14,7 +14,7 @@ data:
   {{- if eq .Values.favorite.drink "coffee" }}
   mug: "true" 
   {{- end}}
-  {{- $relname := .Release.Name -}}
+  {{- $relname := .Release.Name -}} {{/*define a variable*/}}
   {{- with .Values.favorite }}
   scopeDrink: {{ .drink | default "tea" | quote }}
   scopeFood: {{ .food | upper | quote }}

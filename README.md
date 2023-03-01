@@ -1,16 +1,14 @@
 # Helm Examples
-## Getting Started
-See [Getting Started](https://helm.sh/docs/chart_template_guide/getting_started/)
 
+See [Chart Template Guide](https://helm.sh/docs/chart_template_guide/getting_started/)
+
+## Authoring
 - Create new helm chart
 ```sh
 helm create mychart
 ```
-- Remove all template content, create by hand
-```sh
-rm -rf mychart/templates
-```
 
+## Installing
 - add templates/configmap.yml
 - install
 ```sh
@@ -24,6 +22,8 @@ helm get manifest full-coral
 ```sh
 helm uninstall full-coral
 ```
+
+## Debugging
 - dry run/debug
 ```sh
 helm install --debug --dry-run goodly-guppy ./mychart
